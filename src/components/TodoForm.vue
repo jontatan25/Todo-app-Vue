@@ -7,28 +7,19 @@
     </div>
   </template>
   
-  <script>
-  import { ref } from "vue";
-  import { useTodoListStore } from "../stores/todoList";
-  
-  export default {
-    setup() {
-      const todoListStore = useTodoListStore();
-      let newTodo = ref("");
-  
-      const addNewTodo = () => {
-        const todo = { id: Date.now(), text: newTodo.value, done: false };
-        todoListStore.addTodo(todo);
-        newTodo.value = "";
-      };
-  
-      return {
-        newTodo,
-        addNewTodo,
-      };
-    },
-  };
-  </script>
+<script setup>
+import { ref } from "vue";
+import { useTodoListStore } from "../stores/todoList";
+
+const todoListStore = useTodoListStore();
+const newTodo = ref("");
+
+const addNewTodo = () => {
+  const todo = { id: Date.now(), text: newTodo.value, done: false };
+  todoListStore.addTodo(todo);
+  newTodo.value = "";
+};
+</script>
   
   <style scoped>
   .todo-form {

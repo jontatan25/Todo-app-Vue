@@ -13,8 +13,10 @@ export const useTodoListStore = defineStore("todoList", {
     addTodo(newTodo) {
       // Push the newTodo into the todoList array in the state
       this.todoList.push(newTodo);
-      console.log(newTodo)
-      console.log(this.todoList)
     },
+    
+    deleteTodo (id) {
+        this.todoList = this.todoList.filter(todo => todo.id !== id);
+      }
   },
 });
